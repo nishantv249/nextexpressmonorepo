@@ -21,13 +21,15 @@
       "options": {
         "buildTargetName": "build",
         "serveTargetName": "serve",
-        "previewTargetName": "preview"
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static"
       }
     },
     {
       "plugin": "@nx/eslint/plugin",
       "options": {
-        "targetName": "lint"
+        "targetName": "lint",
+        "extensions": ["ts", "tsx", "js", "jsx", "html", "vue"]
       }
     },
     {
@@ -36,7 +38,30 @@
         "targetName": "test"
       },
       "exclude": ["apps/server-e2e/**/*"]
+    },
+    {
+      "plugin": "@nx/next/plugin",
+      "options": {
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "serveStaticTargetName": "serve-static"
+      }
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
     }
   ],
-  "nxCloudAccessToken": "NWI1NzMyM2MtYzI3ZC00MzQxLTg2OGItN2U1MTkxYzAwZDMzfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "NWI1NzMyM2MtYzI3ZC00MzQxLTg2OGItN2U1MTkxYzAwZDMzfHJlYWQtd3JpdGU=",
+  "generators": {
+    "@nx/next": {
+      "application": {
+        "style": "tailwind",
+        "linter": "eslint"
+      }
+    }
+  }
 }
